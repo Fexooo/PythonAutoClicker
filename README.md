@@ -27,6 +27,9 @@ Also the Range should be very low and instead of a comma (,) you need to use a d
 1 - CPS, Activation Key and Close Key are not set!
 2 - Variation is not set!
 
+# Known Bugs
+- After Start Program doesn't respond anymore for windows, but works in Background!
+
 # Games
 If you use this in Games, I'm not responsible for any Bans!
 
