@@ -5,25 +5,40 @@ import random
 from tkinter import *
 from tkinter import messagebox
 
-version = "1.0"
+version = "1.1"
+started = 0
 
 def deve():
     messagebox.showinfo("PythonAutoClicker " + version, "Welcome to PythonAutoClicker " + version + "! \n If you need help on how to use this program open the README.MD! \n Programmed by Fexo! \n Github: Fexooo \n Twitter: @FexoYT \n Instagram: @F.exoo \n YouTube: Fexo")
 
+def run():
+    ekey = ek.get()
+    ckey = ck.get()
+    ecpsvar = ecps.get()
+    evs = evstart.get()
+    eve = evend.get()
+    speedfl = float(ecpsvar)
+    speedfi = float(1 / speedfl)
+    if keyboard.is_pressed(ekey):
+        ctypes.windll.user32.mouse_event(2, 0, 0, 0, 0)
+        ctypes.windll.user32.mouse_event(4, 0, 0, 0, 0)
+        time.sleep(speedfi * random.uniform(float(evs), float(eve)))
+        root.after(0, run)
+    if keyboard.is_pressed(ckey):
+        root.destroy
+        exit()
+    root.after(1, run)
+
 def start():
     print("Start!")
-    if ek.get() and ck.get() and ecps.get() != "":
-        if evstart.get() and evend.get() != "":
-            while True:
-                speedfl = float(ecps.get())
-                speedfi = float(1 / speedfl)
-                if keyboard.is_pressed(ek.get()):
-                    ctypes.windll.user32.mouse_event(2, 0, 0, 0, 0)
-                    ctypes.windll.user32.mouse_event(4, 0, 0, 0, 0)
-                    time.sleep(speedfi * random.uniform(float(evstart.get()), float(evend.get())))
-                if keyboard.is_pressed(ck.get()):
-                    root.destroy()
-                    exit()
+    ekey = ek.get()
+    ckey = ck.get()
+    ecpsvar = ecps.get()
+    evs = evstart.get()
+    eve = evend.get()
+    if ekey and ckey and ecpsvar != "":
+        if evs and eve != "":
+            lockentrys()
         else:
             messagebox.showerror("PythonAutoClicker " + version, "An Error has occured! Code: 2 \n Please make sure the Variation Values are set!")
     else:
@@ -75,8 +90,15 @@ evstart.grid(row=5, column=1)
 Label(mid, text="End Value:").grid(row=6)
 evend = Entry(mid)
 evend.grid(row=6, column=1)
-
 start = Button(bot, command=start, text="Start").grid(row=1, column=0)
 help = Button(bot, command=deve, text="Help").grid(row=1, column=1)
+
+def lockentrys():
+    ek.config(state='disabled')
+    ck.config(state='disabled')
+    ecps.config(state='disabled')
+    evstart.config(state='disabled')
+    evend.config(state='disabled')
+    run()
 
 root.mainloop()

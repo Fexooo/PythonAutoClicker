@@ -28,7 +28,7 @@ Also the Range should be very low and instead of a comma (,) you need to use a d
 2 - Variation is not set!
 
 # Known Bugs
-- After pressing Start Program doesn't respond anymore for windows, but works in Background!
+- After pressing Start Program doesn't respond anymore for windows, but works in Background! (Fixed in Version 1.1)
 
 # Games
 If you use this in Games, I'm not responsible for any Bans!
